@@ -1,6 +1,8 @@
 require 'mustache'
 require 'thor'
 
+require 'buff/buffer_client'
+
 module Buff
   class Command < Thor
     include Thor::Actions
@@ -50,6 +52,17 @@ module Buff
       end
 
       # request Buffer API
+      say("Processing to post Buffer...", color = :cyan)
+      client = BufferClient.new
+      profiles = client.profiles
+      result = client.create_update(body: {text: body, profile_ids: profiles.map(&:id), scheduled_at: options[:d]})
+      if result.success
+        say("Succeeded to post Buffer!", color = :green)
+      else
+        say("Failed to post Buffer! Buffer API error message:", color = :red)
+        say(result.message)
+        exit 1
+      end
     end
 
     private
