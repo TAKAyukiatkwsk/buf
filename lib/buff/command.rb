@@ -33,17 +33,28 @@ module Buff
         exit 1
       end
 
-      # apply args to template and generate body
+      # apply option args to template and generate body
       view = Mustache.new
       view.template_file = template_file
+      parsed_args = parse_post_args(options[:args])
+      parsed_args.each do |key, value|
+        view[key.to_sym] = value
+      end
+      body = view.render
       say("----------------------------------------")
-      say(view.render)
+      say(body)
       say("----------------------------------------")
+      say("Will be scheduled at: #{options[:d]}")
       unless yes?("Continue to post Buffer with this body? [y/n]", color = :cyan)
         exit 0
       end
 
       # request Buffer API
+    end
+
+    private
+    def parse_post_args(args)
+      args.map {|arg| arg.split('=') }.to_h
     end
   end
 end
