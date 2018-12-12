@@ -1,3 +1,4 @@
+require 'mustache'
 require 'thor'
 
 module Buff
@@ -26,11 +27,22 @@ module Buff
       template_dir_name = "templates"
       template_ext = ".mustache"
       template_dir = File.expand_path("../../#{template_dir_name}", File.dirname(__FILE__))
-      unless File.exist?("#{template_dir}/#{template}#{template_ext}")
+      template_file = "#{template_dir}/#{template}#{template_ext}"
+      unless File.exist?(template_file)
         say("Invalid template name: #{template}. Please check template directory.", color = :red)
         exit 1
       end
+
       # apply args to template and generate body
+      view = Mustache.new
+      view.template_file = template_file
+      say("----------------------------------------")
+      say(view.render)
+      say("----------------------------------------")
+      unless yes?("Continue to post Buffer with this body? [y/n]", color = :cyan)
+        exit 0
+      end
+
       # request Buffer API
     end
   end
