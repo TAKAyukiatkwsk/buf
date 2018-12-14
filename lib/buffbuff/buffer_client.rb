@@ -1,8 +1,8 @@
 require 'buffer'
 
-require 'buff/buffer_client/profile'
+require 'buffbuff/buffer_client/profile'
 
-module Buff
+module Buffbuff
   class BufferClient
     def initialize
       @client = Buffer::Client.new(ENV["BUFFER_ACCESS_TOKEN"])

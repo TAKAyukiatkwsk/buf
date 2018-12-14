@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require File.expand_path("../lib/buffbuff/command", File.dirname(__FILE__))
+
+Buffbuff::Command.start

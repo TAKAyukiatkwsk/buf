@@ -1,23 +1,23 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "buff/version"
+require "buffbuff/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "buff"
-  spec.version       = Buff::VERSION
+  spec.name          = "buffbuff"
+  spec.version       = Buffbuff::VERSION
   spec.authors       = ["TAKAyuki_atkwsk"]
   spec.email         = ["takagi.takayuki.yuuki@gmail.com"]
 
   spec.summary       = %q{CLI tool to post Buffer with template}
   spec.description   = %q{CLI tool to post Buffer with template}
-  spec.homepage      = "https://github.com/TAKAyukiatkwsk/buf"
+  spec.homepage      = "https://github.com/TAKAyukiatkwsk/buffbuff"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://github.com/TAKAyukiatkwsk/buf"
+    spec.metadata["allowed_push_host"] = "https://github.com/TAKAyukiatkwsk/buffbuff"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."

@@ -1,8 +1,8 @@
-module Buff
+module Buffbuff
   class BufferClient
     class Profile
       attr_reader :id, :service, :service_username
-      
+
       def initialize(id, service, service_username)
         @id = id
         @service = service

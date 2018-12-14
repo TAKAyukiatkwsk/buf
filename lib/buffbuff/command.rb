@@ -1,9 +1,9 @@
 require 'mustache'
 require 'thor'
 
-require 'buff/buffer_client'
+require 'buffbuff/buffer_client'
 
-module Buff
+module Buffbuff
   class Command < Thor
     include Thor::Actions
 

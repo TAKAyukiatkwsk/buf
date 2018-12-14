@@ -1,4 +1,4 @@
-# Buff
+# Buffbuff
 
 テンプレートを使ってBufferに投稿するCLIツールです。
 
@@ -19,7 +19,7 @@
 ```sh
 $ mkdir templates
 $ touch templates/<template_name>.mustache # and edit mustache file
-$ bundle exec bin/buff post <template_name> -d '2018-12-01T19:00:00+09:00' --args 'series_no=76' 'date=2018年12月15日(土)' 'title=年末LT大会＆ビアバッシュ！' 'description=この機会に一年を振り返りましょう。'
+$ bundle exec bin/buffbuff post <template_name> -d '2018-12-01T19:00:00+09:00' --args 'series_no=76' 'date=2018年12月15日(土)' 'title=年末LT大会＆ビアバッシュ！' 'description=この機会に一年を振り返りましょう。'
 ```
 
 - `-d` is scheduling date on Buffer (String as ISO 8601)
@@ -27,7 +27,7 @@ $ bundle exec bin/buff post <template_name> -d '2018-12-01T19:00:00+09:00' --arg
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/TAKAyukiatkwsk/buff.
+Bug reports and pull requests are welcome on GitHub at https://github.com/TAKAyukiatkwsk/buffbuff.
 
 ## License
 
