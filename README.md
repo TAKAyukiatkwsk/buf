@@ -4,9 +4,8 @@
 
 ## Installation
 
-- Clone this repo.
-- run `bundle install`
-- In future, we want to distribute as gem
+- Add `gem "buffbuff", :github => "TAKAyukiatkwsk/buffbuff"` to your Gemfile
+- and run `bundle install`
 
 ## Requirements
 
@@ -19,7 +18,7 @@
 ```sh
 $ mkdir templates
 $ touch templates/<template_name>.mustache # and edit mustache file
-$ bundle exec bin/buffbuff post <template_name> -d '2018-12-01T19:00:00+09:00' --args 'series_no=76' 'date=2018年12月15日(土)' 'title=年末LT大会＆ビアバッシュ！' 'description=この機会に一年を振り返りましょう。'
+$ bundle exec buffbuff post <template_name> -d '2018-12-01T19:00:00+09:00' --args 'series_no=76' 'date=2018年12月15日(土)' 'title=年末LT大会＆ビアバッシュ！' 'description=この機会に一年を振り返りましょう。'
 ```
 
 - `-d` is scheduling date on Buffer (String as ISO 8601)
