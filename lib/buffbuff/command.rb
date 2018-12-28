@@ -12,7 +12,9 @@ module Buffbuff
 
       @template_dir_name = "templates"
       @template_ext = ".mustache"
-      @template_dir = File.expand_path("../../#{@template_dir_name}", File.dirname(__FILE__))
+      # APP_PATH is enable when call from executable
+      @app_root_dir = APP_PATH || File.expand_path("../../", File.dirname(__FILE__))
+      @template_dir = File.join(@app_root_dir, @template_dir_name)
     end
 
     desc 'list', 'List templates'
