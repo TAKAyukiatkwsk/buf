@@ -2,5 +2,4 @@
 
 require File.expand_path("../lib/buffbuff/command", File.dirname(__FILE__))
 
-APP_PATH = File.expand_path(Dir.pwd)
-Buffbuff::Command.start
+Buffbuff::Command.start(ARGV, {app_path: File.expand_path(Dir.pwd)})

@@ -7,13 +7,12 @@ module Buffbuff
   class Command < Thor
     include Thor::Actions
 
-    def initialize(*args)
+    def initialize(args = [], options = {}, config = {})
       super
 
       @template_dir_name = "templates"
       @template_ext = ".mustache"
-      # APP_PATH is enable when call from executable
-      @app_root_dir = APP_PATH || File.expand_path("../../", File.dirname(__FILE__))
+      @app_root_dir = config[:app_path] || File.expand_path("../../", File.dirname(__FILE__))
       @template_dir = File.join(@app_root_dir, @template_dir_name)
     end
 
