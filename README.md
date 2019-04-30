@@ -2,6 +2,8 @@
 
 テンプレートを使ってBufferに投稿するCLIツールです。
 
+[![Build Status](https://travis-ci.com/TAKAyukiatkwsk/buffbuff.svg?branch=master)](https://travis-ci.com/TAKAyukiatkwsk/buffbuff)
+
 ## Installation
 
 - Add `gem "buffbuff", :github => "TAKAyukiatkwsk/buffbuff"` to your Gemfile
