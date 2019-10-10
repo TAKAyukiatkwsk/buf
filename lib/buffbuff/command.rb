@@ -70,7 +70,7 @@ module Buffbuff
 
     private
     def parse_post_args(args)
-      args.map {|arg| arg.split('=') }.to_h
+      Array(args).map { |arg| arg.split('=') }.to_h
     end
   end
 end
