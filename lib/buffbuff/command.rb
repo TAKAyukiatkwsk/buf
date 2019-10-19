@@ -1,5 +1,6 @@
 require 'mustache'
 require 'thor'
+require 'time'
 
 require 'buffbuff/buffer_client'
 
@@ -31,6 +32,8 @@ module Buffbuff
     desc 'post', 'Post to Buffer'
     method_options :d => :string, :args => :array
     def post(template)
+      set_scheduled_at(options)
+
       # check template
       template_file = "#{@template_dir}/#{template}#{@template_ext}"
       unless File.exist?(template_file)
@@ -49,7 +52,7 @@ module Buffbuff
       say("----------------------------------------")
       say(body)
       say("----------------------------------------")
-      say("Will be scheduled at: #{options[:d]}")
+      say("Will be scheduled at: #{@scheduled_at}")
       unless yes?("Continue to post Buffer with this body? [y/n]", color = :cyan)
         exit 0
       end
@@ -58,7 +61,13 @@ module Buffbuff
       say("Processing to post Buffer...", color = :cyan)
       client = BufferClient.new
       profiles = client.profiles
-      result = client.create_update(body: {text: body, profile_ids: profiles.map(&:id), scheduled_at: options[:d]})
+      result = client.create_update(
+        body: {
+          text: body,
+          profile_ids: profiles.map(&:id),
+          scheduled_at: @scheduled_at
+        }
+      )
       if result.success
         say("Succeeded to post Buffer!", color = :green)
       else
@@ -71,6 +80,14 @@ module Buffbuff
     private
     def parse_post_args(args)
       Array(args).map { |arg| arg.split('=') }.to_h
+    end
+
+    def set_scheduled_at(options)
+      @scheduled_at = options[:d] || (Time.now + time_offset).xmlschema
+    end
+
+    def time_offset
+      10
     end
   end
 end
